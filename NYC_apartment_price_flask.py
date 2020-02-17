@@ -19,8 +19,8 @@ model.summary()
 dataframe = read_csv(r'C:\Users\nCalo\Documents\Automifai\Research\Coding_Lessons\Git\NYC_apartment_price_project\Data\2_cleaned_NYC_property_sales.csv', delimiter=",")
 dataset = dataframe.values
 # split into input (X) and output (Y) variables
-X = dataset[:,0:12]
-Y = dataset[:,12]
+X = dataset[:,0:421]
+Y = dataset[:,421]
 # evaluate the model
 
 
@@ -30,21 +30,19 @@ def home():
 
 @app.route('/predict', methods=['POST']) # https://github.com/nitinkaushik01/Deploy_Machine_Learning_Model_on_Flask_App/blob/master/Flask_Sample_App/app.py
 def predict():
-    Borough= float(request.form['Borough'])
-    Block= float(request.form['Block'])
     Neighborhood= float(request.form['Neighborhood'])
-    Building_Class_Category= float(request.form['Building_Class_Category'])
     Residential_Units= float(request.form['Residential_Units'])
     Commercial_Units= float(request.form['Commercial_Units'])
     Total_Units= float(request.form['Total_Units'])
     Land_sqft= float(request.form['Land_sqft'])
     Gross_sqft= float(request.form['Gross_sqft'])
     Year_Built= float(request.form['Year_Built'])
+    Building_Class_Category= float(request.form['Building_Class_Category'])
     Building_Class= float(request.form['Building_Class'])
     Tax_Class= float(request.form['Tax_Class'])
-
-
-    prediction = model.predict(features.reshape(1, 12), batch_size=1)
+    #must convert features to fit same format as features in ML model
+    features = np.array([Neighborhood,Residential_Units,Commercial_Units,Total_Units,Land_sqft,Gross_sqft,Year_Built,Building_Class_Category,Building_Class,Tax_Class])
+    prediction = model.predict(features.reshape(1, 421), batch_size=1)
 
     return render_template('html.html', prediction_text='Price should be {}'.format(prediction))
 

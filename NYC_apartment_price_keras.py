@@ -49,22 +49,26 @@ cv = ShuffleSplit(n_splits=5, test_size=0.2, random_state=0)
 
 print(cross_val_score(LinearRegression(), X, y, cv=cv))
 '''
+'''
 df.head()
 dataset = df.values
 
 # split into input (X) and output (Y) variables
 X = dataset[:,0:422]
 Y = dataset[:,422]
+'''
+
+X = df.drop(columns=['SALE PRICE'])
+Y = df['SALE PRICE']
 
 model = keras.Sequential()
 model.add(keras.layers.Dense(422, input_dim=422, kernel_initializer='normal', activation='selu'))
 model.add(keras.layers.Dense(100, kernel_initializer='normal', activation='selu'))
 model.add(keras.layers.Dense(5, kernel_initializer='normal', activation='selu'))
 model.add(keras.layers.Dense(1, kernel_initializer='normal'))
-model.compile(loss='mean_squared_error', optimizer='adam')
+model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
 model.fit(X, Y, epochs=100, batch_size=150, verbose=2, shuffle=True)
 model.save('NYC_apartment_price.h5')
-
 
 
 # evaluate model with standardizestimator = KerasRegressor(build_fn=baseline_model, epochs=100, batch_size=5, verbose=0)
