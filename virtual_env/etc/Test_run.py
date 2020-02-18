@@ -17,7 +17,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from numpy import loadtxt
 
-
+# Clean database using pandas
 import datetime
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
@@ -38,7 +38,7 @@ df['SALE PRICE']=df_SALEPRICE
 X = df.drop(columns=['SALE PRICE'])
 Y = df['SALE PRICE']
 
-
+# ML model using Keras
 model = keras.Sequential()
 model.add(keras.layers.Dense(422, input_dim=422, kernel_initializer='normal', activation='selu'))
 model.add(keras.layers.Dense(100, kernel_initializer='normal', activation='selu'))
@@ -48,6 +48,7 @@ model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
 model.fit(X, Y, epochs=10, batch_size=150, verbose=2, shuffle=True)
 model.save('NYC_apartment_price.h5')
 
+# create function to predict price
 def predict_price(Residential_Units, Commercial_Units, Land_sqft, Gross_sqft, Neighborhood, Building_Class_Category, Building_Class, Tax_Class, Year_Built):
     neighborhood_index= np.where(X.columns==Neighborhood)[0][0]
     Building_Class_Category_index= np.where(X.columns==Building_Class_Category)[0][0]
@@ -55,7 +56,8 @@ def predict_price(Residential_Units, Commercial_Units, Land_sqft, Gross_sqft, Ne
     tax_index= np.where(X.columns==Tax_Class)[0][0]
     year_index= np.where(X.columns==Year_Built)[0][0]
 
-    x=np.zeros(len(X.columns))
+    x=np.zeros(len(X.columns)) #sets all values to zero
+    # the below code changes non-zero values to their correct value
     x[0]= Residential_Units
     x[1]= Commercial_Units
     x[2]= Land_sqft
