@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>NYC Rent Price Estimator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class = "login">
+            <form action = "{{ url_for('predict')}}"method="post">
+                <pre class="tab">
+
+                                 Residential_Units: <input type="text" name="Residential_Units" id="Residential_Units">
+                                  Commercial_Units: <input type="text" name="Commercial_Units" id="Commercial_Units">
+                                         Land_sqft: <input type="text" name="Land_sqft" id="Land_sqft">
+                                        Gross_sqft: <input type="text" name="Gross_sqft" id="Gross_sqft">
+                                      Neighborhood: <input type="text" name="Neighborhood" id="Neighborhood">
+                           Building_Class_Category: <input type="text" name="Building_Class_Category" id="Building_Class_Category">
+                                    Building_Class: <input type="text" name="Building_Class" id="Building_Class">
+                                          Tax_Class: <input type="text" name="Tax_Class" id="Tax_Class">
+                                        Year_Built: <input type="text" name="Year_Built" id="Year_Built">
+                                                   <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            </form>
+                                              {{prediction_text}} <!--jinja2-->
+        </div>
+    </body>
+</html>
