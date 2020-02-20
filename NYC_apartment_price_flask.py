@@ -39,7 +39,7 @@ def predict():
     import datetime
     from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()
-    df = pd.read_csv(r'C:\Users\nCalo\Documents\Automifai\Research\Coding_Lessons\Git\NYC_apartment_price_project\Data\2_cleaned_NYC_property_sales.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/Ncalo19/NYC_sales_data/master/2_cleaned_NYC_property_sales.csv')
     df = pd.get_dummies(df, columns=['NEIGHBORHOOD', 'BUILDING CLASS CATEGORY', 'BUILDING CLASS AT TIME OF SALE', 'TAX CLASS AT TIME OF SALE'])
     df['current_year'] = datetime.datetime.now().year
     df['YEAR BUILT'].astype(int)
