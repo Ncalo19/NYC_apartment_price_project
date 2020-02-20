@@ -75,7 +75,7 @@ model.add(keras.layers.Dense(100, kernel_initializer='normal', activation='selu'
 model.add(keras.layers.Dense(5, kernel_initializer='normal', activation='selu'))
 model.add(keras.layers.Dense(1, kernel_initializer='normal'))
 model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
-model.fit(X, Y, epochs=10, batch_size=150, verbose=2, shuffle=True) #epochs: how many times to run through, batch_size:how sets of data points to train on per epoch, verbose: how training progress is shown
+model.fit(X, Y, epochs=25, batch_size=100, verbose=2, shuffle=True) #epochs: how many times to run through, batch_size:how sets of data points to train on per epoch, verbose: how training progress is shown
 model.save('NYC_apartment_price.h5') # save ml model
 
 #https://www.youtube.com/watch?v=oCiRv94GMEc&feature=youtu.be&list=PLeo1K3hjS3uvCeTYTeyfe0-rN5r8zn9rw
