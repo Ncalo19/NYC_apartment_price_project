@@ -28,10 +28,10 @@ def predict():
     ComU= int(request.form['Commercial_Units'])
     Lsqft= float(request.form['Land_sqft'])
     Gsqft= float(request.form['Gross_sqft'])
-    Neighb= (request.form['Neighborhood'])
-    Class_category= (request.form['Building_Class_Category'])
-    Class= (request.form['Building_Class'])
-    Tax= (request.form['Tax_Class'])
+    Neighb= str(request.form['Neighborhood'])
+    Class_category= str(request.form['Building_Class_Category'])
+    Class= str(request.form['Building_Class'])
+    Tax= str(request.form['Tax_Class'])
     Year= (request.form['Year_Built'])
     #Year_Built=(datetime.datetime.now().year)-Year_Built
 
@@ -52,6 +52,11 @@ def predict():
     df = df.drop(columns=['#','BOROUGH','BLOCK', 'YEAR BUILT', 'current_year', 'TOTAL UNITS'])
     df_SALEPRICE = df.pop('SALE PRICE')
     df['SALE PRICE']=df_SALEPRICE
+    df.rename(columns=lambda x: x.strip())
+    df.columns = [col.replace('NEIGHBORHOOD_', '') for col in df.columns]
+    df.columns = [col.replace('BUILDING CLASS CATEGORY_', '') for col in df.columns]
+    df.columns = [col.replace('BUILDING CLASS AT TIME OF SALE_', '') for col in df.columns]
+    df.columns = [col.replace('TAX CLASS AT TIME OF SALE_', '') for col in df.columns]
 
     # divides the data set into X (data) and Y (desired predicted value)
     X = df.drop(columns=['SALE PRICE'])
