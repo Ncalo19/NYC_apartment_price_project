@@ -10,15 +10,432 @@
             <form action = "{{ url_for('predict')}}"method="post">
                 <pre class="tab">
 
-                                 Residential_Units: <input type="text" name="Residential_Units" id="Residential_Units">
-                                  Commercial_Units: <input type="text" name="Commercial_Units" id="Commercial_Units">
-                                         Land_sqft: <input type="text" name="Land_sqft" id="Land_sqft">
-                                        Gross_sqft: <input type="text" name="Gross_sqft" id="Gross_sqft">
-                                     Neighborhood:  <input type="text" name="Neighborhood" id="Neighborhood">
-                           Building_Class_Category: <input type="text" name="Building_Class_Category" id="Building_Class_Category">
-                                    Building_Class: <input type="text" name="Building_Class" id="Building_Class">
-                                         Tax_Class: <input type="text" name="Tax_Class" id="Tax_Class">
-                                        Year_Built: <input type="text" name="Year_Built" id="Year_Built">
+                                 Residential_Units: <input type="text" name="Residential_Units" id="Residential_Units" required>
+                                  Commercial_Units: <input type="text" name="Commercial_Units" id="Commercial_Units" required>
+                                         Land_sqft: <input type="text" name="Land_sqft" id="Land_sqft" required>
+                                        Gross_sqft: <input type="text" name="Gross_sqft" id="Gross_sqft" required>
+                                      Neighborhood: <select type="text" name="Neighborhood" id="Neighborhood" required>
+                                                        <option disabled selected value> -- select an option -- </option>
+                                                        <option>AIRPORT LA GUARDIA</option>
+                                                        <option>ALPHABET CITY</option>
+                                                        <option>ANNADALE</option>
+                                                        <option>ARDEN HEIGHTS</option>
+                                                        <option>ARROCHAR</option>
+                                                        <option>ARROCHAR-SHORE ACRES</option>
+                                                        <option>ARVERNE</option>
+                                                        <option>ASTORIA</option>
+                                                        <option>BATH BEACH</option>
+                                                        <option>BATHGATE</option>
+                                                        <option>BAY RIDGE</option>
+                                                        <option>BAYCHESTER</option>
+                                                        <option>BAYSIDE</option>
+                                                        <option>BEDFORD PARK/NORWOOD</option>
+                                                        <option>BEDFORD STUYVESANT</option>
+                                                        <option>BEECHHURST</option>
+                                                        <option>BELLE HARBOR</option>
+                                                        <option>BELLEROSE</option>
+                                                        <option>BELMONT</option>
+                                                        <option>BENSONHURST</option>
+                                                        <option>BERGEN BEACH</option>
+                                                        <option>BOERUM HILL</option>
+                                                        <option>BOROUGH PARK</option>
+                                                        <option>BRIARWOOD</option>
+                                                        <option>BRIGHTON BEACH</option>
+                                                        <option>BROAD CHANNEL</option>
+                                                        <option>BRONX PARK</option>
+                                                        <option>BRONXDALE</option>
+                                                        <option>BROOKLYN HEIGHTS</option>
+                                                        <option>BROWNSVILLE</option>
+                                                        <option>BULLS HEAD</option>
+                                                        <option>BUSH TERMINAL</option>
+                                                        <option>BUSHWICK</option>
+                                                        <option>CAMBRIA HEIGHTS</option>
+                                                        <option>CANARSIE</option>
+                                                        <option>CARROLL GARDENS</option>
+                                                        <option>CASTLE HILL/UNIONPORT</option>
+                                                        <option>CASTLETON CORNERS</option>
+                                                        <option>CHELSEA</option>
+                                                        <option>CHINATOWN</option>
+                                                        <option>CITY ISLAND</option>
+                                                        <option>CITY ISLAND-PELHAM STRIP</option>
+                                                        <option>CIVIC CENTER</option>
+                                                        <option>CLINTON</option>
+                                                        <option>CLINTON HILL</option>
+                                                        <option>CLOVE LAKES</option>
+                                                        <option>CO-OP CITY</option>
+                                                        <option>COBBLE HILL</option>
+                                                        <option>COBBLE HILL-WEST</option>
+                                                        <option>COLLEGE POINT</option>
+                                                        <option>CONCORD</option>
+                                                        <option>CONCORD-FOX HILLS</option>
+                                                        <option>CONEY ISLAND</option>
+                                                        <option>CORONA</option>
+                                                        <option>COUNTRY CLUB</option>
+                                                        <option>CROTONA PARK</option>
+                                                        <option>CROWN HEIGHTS</option>
+                                                        <option>CYPRESS HILLS</option>
+                                                        <option>DONGAN HILLS</option>
+                                                        <option>DONGAN HILLS-COLONY</option>
+                                                        <option>DONGAN HILLS-OLD TOWN</option>
+                                                        <option>DOUGLASTON</option>
+                                                        <option>DOWNTOWN-FULTON FERRY</option>
+                                                        <option>DOWNTOWN-FULTON MALL</option>
+                                                        <option>DOWNTOWN-METROTECH</option>
+                                                        <option>DYKER HEIGHTS</option>
+                                                        <option>EAST ELMHURST</option>
+                                                        <option>EAST NEW YORK</option>
+                                                        <option>EAST RIVER</option>
+                                                        <option>EAST TREMONT</option>
+                                                        <option>EAST VILLAGE</option>
+                                                        <option>ELMHURST</option>
+                                                        <option>ELTINGVILLE</option>
+                                                        <option>EMERSON HILL</option>
+                                                        <option>FAR ROCKAWAY</option>
+                                                        <option>FASHION</option>
+                                                        <option>FIELDSTON</option>
+                                                        <option>FINANCIAL</option>
+                                                        <option>FLATBUSH-CENTRAL</option>
+                                                        <option>FLATBUSH-EAST</option>
+                                                        <option>FLATBUSH-LEFFERTS GARDEN</option>
+                                                        <option>FLATBUSH-NORTH</option>
+                                                        <option>FLATIRON</option>
+                                                        <option>FLATLANDS</option>
+                                                        <option>FLORAL PARK</option>
+                                                        <option>FLUSHING-NORTH</option>
+                                                        <option>FLUSHING-SOUTH</option>
+                                                        <option>FORDHAM</option>
+                                                        <option>FOREST HILLS</option>
+                                                        <option>FORT GREENE</option>
+                                                        <option>FRESH KILLS</option>
+                                                        <option>FRESH MEADOWS</option>
+                                                        <option>GERRITSEN BEACH</option>
+                                                        <option>GLEN OAKS</option>
+                                                        <option>GLENDALE</option>
+                                                        <option>GOWANUS</option>
+                                                        <option>GRAMERCY</option>
+                                                        <option>GRANT CITY</option>
+                                                        <option>GRASMERE</option>
+                                                        <option>GRAVESEND</option>
+                                                        <option>GREAT KILLS</option>
+                                                        <option>GREAT KILLS-BAY TERRACE</option>
+                                                        <option>GREENPOINT</option>
+                                                        <option>GREENWICH VILLAGE-CENTRAL</option>
+                                                        <option>GREENWICH VILLAGE-WEST</option>
+                                                        <option>GRYMES HILL</option>
+                                                        <option>HAMMELS</option>
+                                                        <option>HARLEM-CENTRAL</option>
+                                                        <option>HARLEM-EAST</option>
+                                                        <option>HARLEM-UPPER</option>
+                                                        <option>HARLEM-WEST</option>
+                                                        <option>HIGHBRIDGE/MORRIS HEIGHTS</option>
+                                                        <option>HILLCREST</option>
+                                                        <option>HOLLIS</option>
+                                                        <option>HOLLIS HILLS</option>
+                                                        <option>HOLLISWOOD</option>
+                                                        <option>HOWARD BEACH</option>
+                                                        <option>HUGUENOT</option>
+                                                        <option>HUNTS POINT</option>
+                                                        <option>INWOOD</option>
+                                                        <option>JACKSON HEIGHTS</option>
+                                                        <option>JAMAICA</option>
+                                                        <option>JAMAICA BAY</option>
+                                                        <option>JAMAICA ESTATES</option>
+                                                        <option>JAMAICA HILLS</option>
+                                                        <option>JAVITS CENTER</option>
+                                                        <option>KENSINGTON</option>
+                                                        <option>KEW GARDENS</option>
+                                                        <option>KINGSBRIDGE HTS/UNIV HTS</option>
+                                                        <option>KINGSBRIDGE/JEROME PARK</option>
+                                                        <option>KIPS BAY</option>
+                                                        <option>LAURELTON</option>
+                                                        <option>LITTLE ITALY</option>
+                                                        <option>LITTLE NECK</option>
+                                                        <option>LIVINGSTON</option>
+                                                        <option>LONG ISLAND CITY</option>
+                                                        <option>LOWER EAST SIDE</option>
+                                                        <option>MADISON</option>
+                                                        <option>MANHATTAN BEACH</option>
+                                                        <option>MANHATTAN VALLEY</option>
+                                                        <option>MANOR HEIGHTS</option>
+                                                        <option>MARINE PARK</option>
+                                                        <option>MARINERS HARBOR</option>
+                                                        <option>MASPETH</option>
+                                                        <option>MELROSE/CONCOURSE</option>
+                                                        <option>MIDDLE VILLAGE</option>
+                                                        <option>MIDLAND BEACH</option>
+                                                        <option>MIDTOWN CBD</option>
+                                                        <option>MIDTOWN EAST</option>
+                                                        <option>MIDTOWN WEST</option>
+                                                        <option>MIDWOOD</option>
+                                                        <option>MILL BASIN</option>
+                                                        <option>MORRIS PARK/VAN NEST</option>
+                                                        <option>MORRISANIA/LONGWOOD</option>
+                                                        <option>MOTT HAVEN/PORT MORRIS</option>
+                                                        <option>MOUNT HOPE/MOUNT EDEN</option>
+                                                        <option>MURRAY HILL</option>
+                                                        <option>NAVY YARD</option>
+                                                        <option>NEPONSIT</option>
+                                                        <option>NEW BRIGHTON</option>
+                                                        <option>NEW BRIGHTON-ST. GEORGE</option>
+                                                        <option>NEW DORP</option>
+                                                        <option>NEW DORP-BEACH</option>
+                                                        <option>NEW DORP-HEIGHTS</option>
+                                                        <option>NEW SPRINGVILLE</option>
+                                                        <option>OAKLAND GARDENS</option>
+                                                        <option>OAKWOOD</option>
+                                                        <option>OAKWOOD-BEACH</option>
+                                                        <option>OCEAN HILL</option>
+                                                        <option>OCEAN PARKWAY-NORTH</option>
+                                                        <option>OCEAN PARKWAY-SOUTH</option>
+                                                        <option>OLD MILL BASIN</option>
+                                                        <option>OZONE PARK</option>
+                                                        <option>PARK SLOPE</option>
+                                                        <option>PARK SLOPE SOUTH</option>
+                                                        <option>PARKCHESTER</option>
+                                                        <option>PELHAM GARDENS</option>
+                                                        <option>PELHAM PARKWAY NORTH</option>
+                                                        <option>PELHAM PARKWAY SOUTH</option>
+                                                        <option>PLEASANT PLAINS</option>
+                                                        <option>PORT IVORY</option>
+                                                        <option>PORT RICHMOND</option>
+                                                        <option>PRINCES BAY</option>
+                                                        <option>PROSPECT HEIGHTS</option>
+                                                        <option>QUEENS VILLAGE</option>
+                                                        <option>RED HOOK</option>
+                                                        <option>REGO PARK</option>
+                                                        <option>RICHMOND HILL</option>
+                                                        <option>RICHMONDTOWN</option>
+                                                        <option>RICHMONDTOWN-LIGHTHS HILL</option>
+                                                        <option>RIDGEWOOD</option>
+                                                        <option>RIVERDALE</option>
+                                                        <option>ROCKAWAY PARK</option>
+                                                        <option>ROOSEVELT ISLAND</option>
+                                                        <option>ROSEBANK</option>
+                                                        <option>ROSEDALE</option>
+                                                        <option>ROSSVILLE</option>
+                                                        <option>ROSSVILLE-CHARLESTON</option>
+                                                        <option>ROSSVILLE-PORT MOBIL</option>
+                                                        <option>ROSSVILLE-RICHMOND VALLEY</option>
+                                                        <option>SCHUYLERVILLE/PELHAM BAY</option>
+                                                        <option>SEAGATE</option>
+                                                        <option>SHEEPSHEAD BAY</option>
+                                                        <option>SILVER LAKE</option>
+                                                        <option>SO. JAMAICA-BAISLEY PARK</option>
+                                                        <option>SOHO</option>
+                                                        <option>SOUNDVIEW</option>
+                                                        <option>SOUTH BEACH</option>
+                                                        <option>SOUTH JAMAICA</option>
+                                                        <option>SOUTH OZONE PARK</option>
+                                                        <option>SOUTHBRIDGE</option>
+                                                        <option>SPRING CREEK</option>
+                                                        <option>SPRINGFIELD GARDENS</option>
+                                                        <option>ST. ALBANS</option>
+                                                        <option>STAPLETON</option>
+                                                        <option>STAPLETON-CLIFTON</option>
+                                                        <option>SUNNYSIDE</option>
+                                                        <option>SUNSET PARK</option>
+                                                        <option>THROGS NECK</option>
+                                                        <option>TODT HILL</option>
+                                                        <option>TOMPKINSVILLE</option>
+                                                        <option>TOTTENVILLE</option>
+                                                        <option>TRAVIS</option>
+                                                        <option>TRIBECA</option>
+                                                        <option>UPPER EAST SIDE (59-79)</option>
+                                                        <option>UPPER EAST SIDE (79-96)</option>
+                                                        <option>UPPER EAST SIDE (96-110)</option>
+                                                        <option>UPPER WEST SIDE (59-79)</option>
+                                                        <option>UPPER WEST SIDE (79-96)</option>
+                                                        <option>UPPER WEST SIDE (96-116)</option>
+                                                        <option>WAKEFIELD</option>
+                                                        <option>WASHINGTON HEIGHTS LOWER</option>
+                                                        <option>WASHINGTON HEIGHTS UPPER</option>
+                                                        <option>WEST NEW BRIGHTON</option>
+                                                        <option>WESTCHESTER</option>
+                                                        <option>WESTERLEIGH</option>
+                                                        <option>WHITESTONE</option>
+                                                        <option>WILLIAMSBRIDGE</option>
+                                                        <option>WILLIAMSBURG-CENTRAL</option>
+                                                        <option>WILLIAMSBURG-EAST</option>
+                                                        <option>WILLIAMSBURG-NORTH</option>
+                                                        <option>WILLIAMSBURG-SOUTH</option>
+                                                        <option>WILLOWBROOK</option>
+                                                        <option>WINDSOR TERRACE</option>
+                                                        <option>WOODHAVEN</option>
+                                                        <option>WOODLAWN</option>
+                                                        <option>WOODROW</option>
+                                                        <option>WOODSIDE</option>
+                                                        <option>WYCKOFF HEIGHTS</option>
+                                                    </select>
+                           Building_Class_Category: <select type="text" name="Building_Class_Category" id="Building_Class_Category" required>
+                                                         <option disabled selected value> -- select an option -- </option>
+                                                         <option>01 ONE FAMILY DWELLINGS</option>
+                                                         <option>02 TWO FAMILY DWELLINGS</option>
+                                                         <option>03 THREE FAMILY DWELLINGS</option>
+                                                         <option>05 TAX CLASS 1 VACANT LAND</option>
+                                                         <option>06 TAX CLASS 1 - OTHER</option>
+                                                         <option>07 RENTALS - WALKUP APARTMENTS</option>
+                                                         <option>08 RENTALS - ELEVATOR APARTMENTS</option>
+                                                         <option>09 COOPS - WALKUP APARTMENTS</option>
+                                                         <option>10 COOPS - ELEVATOR APARTMENTS</option>
+                                                         <option>11 SPECIAL CONDO BILLING LOTS</option>
+                                                         <option>11A CONDO-RENTALS</option>
+                                                         <option>14 RENTALS - 4-10 UNIT</option>
+                                                         <option>21 OFFICE BUILDINGS</option>
+                                                         <option>22 STORE BUILDINGS</option>
+                                                         <option>23 LOFT BUILDINGS</option>
+                                                         <option>25 LUXURY HOTELS</option>
+                                                         <option>26 OTHER HOTELS</option>
+                                                         <option>27 FACTORIES</option>
+                                                         <option>29 COMMERCIAL GARAGES</option>
+                                                         <option>30 WAREHOUSES</option>
+                                                         <option>31 COMMERCIAL VACANT LAND</option>
+                                                         <option>32 HOSPITAL AND HEALTH FACILITIES</option>
+                                                         <option>33 EDUCATIONAL FACILITIES</option>
+                                                         <option>34 THEATRES</option>
+                                                         <option>35 INDOOR PUBLIC AND CULTURAL FACILITIES</option>
+                                                         <option>36 OUTDOOR RECREATIONAL FACILITIES</option>
+                                                         <option>37 RELIGIOUS FACILITIES</option>
+                                                         <option>38 ASYLUMS AND HOMES</option>
+                                                         <option>40 SELECTED GOVERNMENTAL FACILITIES</option>
+                                                         <option>41 TAX CLASS 4 - OTHER</option>
+                                                    </select>
+                                    Building_Class: <select type="text" name="Building_Class" id="Building_Class" required>
+                                                         <option disabled selected value> -- select an option -- </option>
+                                                         <option>A0</option>
+                                                         <option>A1</option>
+                                                         <option>A2</option>
+                                                         <option>A3</option>
+                                                         <option>A4</option>
+                                                         <option>A5</option>
+                                                         <option>A6</option>
+                                                         <option>A7</option>
+                                                         <option>A9</option>
+                                                         <option>B1</option>
+                                                         <option>B2</option>
+                                                         <option>B3</option>
+                                                         <option>B9</option>
+                                                         <option>C0</option>
+                                                         <option>C1</option>
+                                                         <option>C2</option>
+                                                         <option>C3</option>
+                                                         <option>C4</option>
+                                                         <option>C5</option>
+                                                         <option>C6</option>
+                                                         <option>C7</option>
+                                                         <option>C9</option>
+                                                         <option>CM</option>
+                                                         <option>D1</option>
+                                                         <option>D2</option>
+                                                         <option>D3</option>
+                                                         <option>D4</option>
+                                                         <option>D5</option>
+                                                         <option>D6</option>
+                                                         <option>D7</option>
+                                                         <option>D9</option>
+                                                         <option>E1</option>
+                                                         <option>E2</option>
+                                                         <option>E7</option>
+                                                         <option>E9</option>
+                                                         <option>F1</option>
+                                                         <option>F2</option>
+                                                         <option>F4</option>
+                                                         <option>F5</option>
+                                                         <option>F9</option>
+                                                         <option>G0</option>
+                                                         <option>G1</option>
+                                                         <option>G2</option>
+                                                         <option>G4</option>
+                                                         <option>G5</option>
+                                                         <option>G6</option>
+                                                         <option>G8</option>
+                                                         <option>G9</option>
+                                                         <option>GU</option>
+                                                         <option>GW</option>
+                                                         <option>H1</option>
+                                                         <option>H2</option>
+                                                         <option>H3</option>
+                                                         <option>H4</option>
+                                                         <option>H6</option>
+                                                         <option>H8</option>
+                                                         <option>H9</option>
+                                                         <option>HB</option>
+                                                         <option>HH</option>
+                                                         <option>HR</option>
+                                                         <option>HS</option>
+                                                         <option>I1</option>
+                                                         <option>I3</option>
+                                                         <option>I4</option>
+                                                         <option>I5</option>
+                                                         <option>I6</option>
+                                                         <option>I7</option>
+                                                         <option>I9</option>
+                                                         <option>J1</option>
+                                                         <option>J4</option>
+                                                         <option>J8</option>
+                                                         <option>J9</option>
+                                                         <option>K1</option>
+                                                         <option>K2</option>
+                                                         <option>K3</option>
+                                                         <option>K4</option>
+                                                         <option>K5</option>
+                                                         <option>K6</option>
+                                                         <option>K7</option>
+                                                         <option>K8</option>
+                                                         <option>K9</option>
+                                                         <option>L1</option>
+                                                         <option>L3</option>
+                                                         <option>L8</option>
+                                                         <option>L9</option>
+                                                         <option>M1</option>
+                                                         <option>M2</option>
+                                                         <option>M3</option>
+                                                         <option>M4</option>
+                                                         <option>M9</option>
+                                                         <option>N2</option>
+                                                         <option>N9</option>
+                                                         <option>O1</option>
+                                                         <option>O2</option>
+                                                         <option>O3</option>
+                                                         <option>O4</option>
+                                                         <option>O5</option>
+                                                         <option>O6</option>
+                                                         <option>O7</option>
+                                                         <option>O8</option>
+                                                         <option>O9</option>
+                                                         <option>P2</option>
+                                                         <option>P5</option>
+                                                         <option>P6</option>
+                                                         <option>P8</option>
+                                                         <option>P9</option>
+                                                         <option>Q8</option>
+                                                         <option>R0</option>
+                                                         <option>RR</option>
+                                                         <option>S0</option>
+                                                         <option>S1</option>
+                                                         <option>S2</option>
+                                                         <option>S3</option>
+                                                         <option>S4</option>
+                                                         <option>S5</option>
+                                                         <option>S9</option>
+                                                         <option>V0</option>
+                                                         <option>V1</option>
+                                                         <option>W1</option>
+                                                         <option>W2</option>
+                                                         <option>W3</option>
+                                                         <option>W4</option>
+                                                         <option>W8</option>
+                                                         <option>W9</option>
+                                                         <option>Y3</option>
+                                                         <option>Z0</option>
+                                                         <option>Z9</option>
+                                                    </select>
+                                         Tax_Class: <select type="text" name="Tax_Class" id="Tax_Class" required>
+                                                         <option disabled selected value> -- select an option -- </option>
+                                                         <option>1</option>
+                                                         <option>2</option>
+                                                         <option>4</option>
+                                                    </select>
+                                        Year_Built: <input type="text" name="Year_Built" id="Year_Built" required>
                                                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
             </form>
                                               {{prediction_text}} <!--jinja2-->

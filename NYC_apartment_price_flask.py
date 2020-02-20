@@ -21,7 +21,7 @@ model = load_model('NYC_apartment_price.h5')
 def home():
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST']) # https://github.com/nitinkaushik01/Deploy_Machine_Learning_Model_on_Flask_App/blob/master/Flask_Sample_App/app.py
+@app.route('/', methods=['POST']) # https://github.com/nitinkaushik01/Deploy_Machine_Learning_Model_on_Flask_App/blob/master/Flask_Sample_App/app.py
 def predict():
     # grabs the input data when a post request is sent
     ResU= int(request.form['Residential_Units'])
@@ -52,7 +52,7 @@ def predict():
     df = df.drop(columns=['#','BOROUGH','BLOCK', 'YEAR BUILT', 'current_year', 'TOTAL UNITS'])
     df_SALEPRICE = df.pop('SALE PRICE')
     df['SALE PRICE']=df_SALEPRICE
-    df.rename(columns=lambda x: x.strip())
+    df=df.rename(columns=lambda x: x.strip())
     df.columns = [col.replace('NEIGHBORHOOD_', '') for col in df.columns]
     df.columns = [col.replace('BUILDING CLASS CATEGORY_', '') for col in df.columns]
     df.columns = [col.replace('BUILDING CLASS AT TIME OF SALE_', '') for col in df.columns]

@@ -29,7 +29,7 @@ df = pd.get_dummies(df, columns=['AGE OF BUILDING'])
 df = df.drop(columns=['#','BOROUGH','BLOCK', 'YEAR BUILT', 'current_year', 'TOTAL UNITS'])
 df_SALEPRICE = df.pop('SALE PRICE')
 df['SALE PRICE']=df_SALEPRICE
-df.rename(columns=lambda x: x.strip())
+df=df.rename(columns=lambda x: x.strip())
 df.columns = [col.replace('NEIGHBORHOOD_', '') for col in df.columns]
 df.columns = [col.replace('BUILDING CLASS CATEGORY_', '') for col in df.columns]
 df.columns = [col.replace('BUILDING CLASS AT TIME OF SALE_', '') for col in df.columns]
