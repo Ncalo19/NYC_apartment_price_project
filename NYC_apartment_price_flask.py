@@ -33,9 +33,29 @@ def predict():
     Class= str(request.form['Building_Class'])
     Tax= str(request.form['Tax_Class'])
     Year= (request.form['Year_Built'])
-    #Year_Built=(datetime.datetime.now().year)-Year_Built
 
-    # cleans the dataframe using pandas
+    #convert year to the str category that the model will understand
+    Year = int(Year)
+    if Year < 3:
+        Year ='AGE OF BUILDING_1'
+    elif Year < 10:
+        Year = 'AGE OF BUILDING_2'
+    elif Year < 20:
+        Year = 'AGE OF BUILDING_3'
+    elif Year < 30:
+        Year = 'AGE OF BUILDING_4'
+    elif Year < 50:
+        Year = 'AGE OF BUILDING_5'
+    elif Year < 75:
+        Year = 'AGE OF BUILDING_6'
+    elif Year < 100:
+        Year = 'AGE OF BUILDING_7'
+    elif Year < 150:
+        Year = 'AGE OF BUILDING_8'
+    else:
+        Year = 'AGE OF BUILDING_9'
+
+    # cleans the dataframe using pandas (dataframe needed here because it is used to create the input columns at line 84)
     import datetime
     from sklearn.preprocessing import LabelEncoder
     le = LabelEncoder()
