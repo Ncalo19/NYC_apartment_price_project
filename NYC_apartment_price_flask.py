@@ -28,7 +28,6 @@ def predict():
     ComU= int(request.form['Commercial_Units'])
     Gsqft= float(request.form['Gross_sqft'])
     Neighb= str(request.form['Neighborhood'])
-    Class_category= str(request.form['Building_Class_Category'])
     Class= str(request.form['Building_Class'])
     Tax= str(request.form['Tax_Class'])
     Year= (request.form['Year_Built'])
@@ -60,9 +59,8 @@ def predict():
     X = df.drop(columns=['SALE PRICE'])
     Y = df['SALE PRICE']
 
-    def predict_price(Residential_Units, Commercial_Units, Land_sqft, Gross_sqft, Neighborhood, Building_Class_Category, Building_Class, Tax_Class, Year_Built):
+    def predict_price(Residential_Units, Commercial_Units, Gross_sqft, Neighborhood, Building_Class, Tax_Class, Year_Built):
         neighborhood_index= np.where(X.columns==Neighborhood)[0][0] # finds column with the title given in the neighborhood box
-        Building_Class_Category_index= np.where(X.columns==Building_Class_Category)[0][0]
         Building_Class_index= np.where(X.columns==Building_Class)[0][0]
         tax_index= np.where(X.columns==Tax_Class)[0][0]
         year_index= np.where(X.columns==Year_Built)[0][0]
@@ -73,8 +71,6 @@ def predict():
         x[2]= Gross_sqft
         if neighborhood_index >= 0:
             x[neighborhood_index] = 1 # assigns a one to the desired neighborhood (one hot encoding)
-        if Building_Class_Category_index >= 0:
-            x[Building_Class_Category_index] = 1
         if Building_Class_index >= 0:
             x[Building_Class_index] = 1
         if tax_index >= 0:
@@ -84,9 +80,9 @@ def predict():
 
         #return model.predict([x])[0]
         test1 = np.array([x])[0] #the x data set object is passed through the ml model
-        return model.predict(test1.reshape(1, 421), batch_size=1)
+        return model.predict(test1.reshape(1, 391), batch_size=1)
 
-    prediction = predict_price(ResU,ComU,Gsqft,Neighb,Class_category,Class,Tax,Year) # set up this way to avoid confusion between global and local variables
+    prediction = predict_price(ResU,ComU,Gsqft,Neighb,Class,Tax,Year) # set up this way to avoid confusion between global and local variables
     return render_template('index.html', prediction_text='Price should be {}'.format(prediction)) # prediction sent to index.html template file
 
 if __name__ == "__main__":
