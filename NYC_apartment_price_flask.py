@@ -53,7 +53,7 @@ def predict():
     else:
         Year = 'AGE OF BUILDING_9'
 
-    df = pd.read_csv(r'C:\Users\nCalo\Documents\Automifai\Research\Coding_Lessons\Git\NYC_apartment_price_project\Data\finished_data.csv')
+    df = pd.read_csv(r'Data\finished_data.csv')
 
     # divides the data set into X (data) and Y (desired predicted value)
     X = df.drop(columns=['SALE PRICE'])
